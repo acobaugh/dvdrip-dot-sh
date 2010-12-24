@@ -2,7 +2,7 @@
 
 
 base=/home/phalenor/dvdrip
-device='/dev/hda'
+device='/dev/hdb'
 vbitrate="1200"
 abitrate=256
 lameopts="br=$abitrate:cbr"
@@ -104,7 +104,7 @@ dvdnav)
 		echo "Pass 2 of 2 - $title ($cur of $total)"
 
 		command="mencoder -dvd-device $device dvdnav://$title -nocache \
-			-ffourcc DIVX -ovc lavc -lavcopts threads=$threadsvcodec=mpeg4:vbitrate=$vbitrate:mpeg_quant:gmc:vpass=2 \
+			-ffourcc DIVX -ovc lavc -lavcopts threads=$threads:vcodec=mpeg4:vbitrate=$vbitrate:mpeg_quant:gmc:vpass=2 \
 			$af -oac mp3lame -lameopts $lameopts $alang $aid $filters \
 			-o $base/$project/avi/$project-$title.avi $endpos $msglevel "
 		echo $command
